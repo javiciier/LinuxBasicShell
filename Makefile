@@ -4,8 +4,9 @@
 shell = terminal		# variable que se refiere al terminal
 
 # Compilar el programa (añadir nuevas librerías en la primera línea)
+# Opción -g permite debuggear programa
 compilar : terminal.c auxiliar.c
-	gcc -Wall shell.c auxiliar.o  -o $(shell)
+	gcc -g -Wall shell.c auxiliar.o  -o $(shell)
 
 # Eliminar el ejecutable y ficheros creados por el compilador
 limpiar :
@@ -14,6 +15,10 @@ limpiar :
 # Ejecutar el terminal
 ejecutar :
 	./$(shell)
+
+# Debuggear el programa (GDB)
+debuggear: 
+	gdb $(shell)
 
 ######################################################################
 # CREACIÓN DEL CÓDIGO OBJETO PARA EL COMPILADOR(extensión .o)
