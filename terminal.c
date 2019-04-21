@@ -9,6 +9,7 @@
 #include <stdio.h>                                                              // Librería de E/S básica
 #include <string.h>                                                             // Librería para trabajar con strings
 #include <stdlib.h>                                                             // Librería de funciones más comunes
+#include <unistd.h>                                                             // Librería para trabajar con directorios
 #import "auxiliar.h"                                                            // Cabeceras de funciones auxiliares
 
 /********************************* CONSTANTES *********************************/
@@ -16,7 +17,7 @@
 #define PROMPT "#): "
 #define INVALID_ARG "Argumento no válido.\n"
 #define INVALID_COMMAND "Comando no encontrado.\n"
-#define INVALID_ARGUMENT "Faltan argumentos: "
+#define MISSING_ARGUMENT "Faltan argumentos: "
 #define SHELL_EXIT "Saliendo del terminal..."
 // Constantes NUMÉRICAS
 #define LONGITUD_COMANDO 1024                                                   // Longitud máxima del comando recibido
@@ -39,7 +40,7 @@ int main(int argc, char* argv[]) {
             if ( !strcmp(comandos[0], "salir") )                                // Si usuario inserta comando salir, se cierra el terminal
                 ejecutar = 0;
         }
-    }
+    } // end while
 
     // Liberación de recursos temporales (si hubiese)
 
